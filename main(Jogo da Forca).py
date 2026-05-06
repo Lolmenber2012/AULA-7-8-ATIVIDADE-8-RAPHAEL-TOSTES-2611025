@@ -11,6 +11,37 @@ lista_palavras = [
     'gaivota',
     'humano'
 ]
+def joga_forca():
+    letras_tentadas = []
+    vidas = 6
+    game_over = False
+    while not game_over:
+        print("\nVocê tem ", vidas, "!")
+        tentativa = input('adivinhe uma letra:').lower()
+        palavra = ""
+        for letra in palavra_escolhida:
+            if letra == palavra_escolhida:
+                palavra  = palavra + letra
+                letras_tentadas.append(tentativa)
+            elif letra in letras_tentadas:
+                palavra  = palavra + letra
+            else:
+                palavra = palavra + "_"
+        print('Palavra a ser descoberta:', palavra )
+        if tentativa in letras_tentadas:
+            print(f'Você já tentou a letra: {tentativa}')
+        if '_' not in palavra:
+            game_over = True
+            print('\nVocê já achou a palavra! PARABÉNS!!!!!')
+        if tentativa not in palavra_escolhida:
+            vidas-= 1
+            print(f'\n {tentativa} não está na palavra. Você perdeu uma vida :o')
+        if vidas == 0:
+            game_over = True
+            print(f'\n A palavra era {palavra_escolhida}! Você morreu :( ')
+    
+
+
 palavra_escolhida=random.choice(lista_palavras)
 espaços = ''
 tamanho_palavra = len(palavra_escolhida)

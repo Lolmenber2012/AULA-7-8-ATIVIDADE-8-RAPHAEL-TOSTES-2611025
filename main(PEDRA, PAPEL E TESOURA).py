@@ -1,12 +1,22 @@
 import random
 vitoriaDoJogador=0
 vitoriaDoPC=0
+def jogar_PPT():
+  game_over= False
+  while not game_over:
 
+    escolhas = jogadas()
+    result = verificarVitoria(escolhas["Jogador"], escolhas["computador"])
+    print(result)
+    print(f'Pontuação:\
+        Jogador:{vitoriaDoJogador} PC:{vitoriaDoPC}')  
 def jogadas():
   jogador = input("Entre sua escolha (pedra, papel, tesoura): ")
   opções = ["pedra", "papel","tesoura"]
   computador = random.choice(opções)
   escolhas = {"Jogador": jogador, "computador":computador}
+  vitoriaDoJogador=0
+  vitoriaDoPC=0
   return escolhas
 
 def verificarVitoria(jg, pc):
@@ -34,7 +44,8 @@ def verificarVitoria(jg, pc):
   else:
     
     return "tesouras foi esmagada pela pedra. Se FU***."
-   
+
+game_over= False  
 escolhas = jogadas()
 result = verificarVitoria(escolhas["Jogador"], escolhas["computador"])
 print(result)
